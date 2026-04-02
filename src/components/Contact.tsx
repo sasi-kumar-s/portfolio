@@ -1,154 +1,159 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion";
-import { Mail, Github, Linkedin, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
+import { ArrowUpRight, Github, Linkedin, Mail, FileText } from "lucide-react";
+import { PerspectiveCard } from "./PerspectiveCard";
 
-const MagneticLink = ({ children, href }: { children: React.ReactNode, href: string }) => {
-    const ref = useRef<HTMLAnchorElement>(null);
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const springConfig = { stiffness: 150, damping: 15 };
-    const dx = useSpring(x, springConfig);
-    const dy = useSpring(y, springConfig);
-
-    const handleMouseMove = (e: React.MouseEvent) => {
-        if (!ref.current) return;
-        const rect = ref.current.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        x.set(e.clientX - centerX);
-        y.set(e.clientY - centerY);
-    };
-
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-    };
-
+export const Contact = () => {
     return (
-        <motion.a
-            ref={ref}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ x: dx, y: dy }}
-            className="relative flex items-center justify-center p-4 rounded-full bg-white/5 border border-white/10 hover:border-white/30 hover:bg-white/10 transition-colors duration-300 group"
-        >
-            {children}
-            <motion.div 
-                className="absolute -top-1 -right-1 opacity-0 group-hover:opacity-100 transition-opacity"
-                initial={{ scale: 0 }}
-                whileHover={{ scale: 1 }}
-            >
-                <ArrowUpRight className="w-4 h-4 text-white" />
-            </motion.div>
-        </motion.a>
-    );
-};
+        <section id="contact" className="relative bg-[#050505] pt-20 pb-12 px-6 md:px-12 lg:px-24 overflow-hidden z-10 selection:bg-emerald-500/30">
+            {/* Cinematic Global Atmosphere */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+            
+            <div className="absolute bottom-[-10%] right-[-5%] w-[800px] h-[600px] bg-sky-500/[0.02] rounded-full blur-[150px] pointer-events-none mix-blend-screen" />
+            <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-emerald-500/[0.02] rounded-full blur-[150px] pointer-events-none mix-blend-screen" />
 
-export const Contact: React.FC = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end end"]
-    });
-
-    const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1]);
-    const y = useTransform(scrollYProgress, [0, 0.5], [50, 0]);
-
-    return (
-        <footer 
-            ref={containerRef}
-            className="relative bg-[#0a0a0a] min-h-screen flex flex-col justify-between pt-40 pb-12 px-6 md:px-12 lg:px-24 overflow-hidden z-10"
-        >
-            {/* Architectural Background Mesh */}
-            <div className="absolute inset-0 z-0">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] bg-indigo-500/5 rounded-full blur-[150px] animate-pulse" />
-                <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[120px]" />
-                <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
-            </div>
-
-            <motion.div 
-                style={{ opacity, y }}
-                className="relative z-10 w-full max-w-7xl mx-auto flex flex-col items-center"
-            >
-                {/* Massive Impact Typography */}
-                <div className="relative mb-20 md:mb-32">
-                    <h2 className="text-[12vw] md:text-[10vw] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white/20 to-transparent absolute inset-0 select-none">
-                        LET'S TALK
-                    </h2>
-                    <h2 className="text-[12vw] md:text-[10vw] font-black leading-none tracking-tighter text-white relative flex flex-col items-center">
-                        <span>GET IN</span>
-                        <span className="italic font-light opacity-80 md:ml-[10vw]">TOUCH.</span>
-                    </h2>
-                </div>
-
-                <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 md:gap-8 mb-32">
-                    {/* Information Columns */}
-                    <div className="space-y-8 text-center md:text-left">
-                        <div>
-                            <span className="text-white/30 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Navigation</span>
-                            <nav className="flex flex-col gap-4 text-xl">
-                                <a href="#" className="hover:text-white/60 transition-colors w-fit mx-auto md:mx-0">Home</a>
-                                <a href="#projects" className="hover:text-white/60 transition-colors w-fit mx-auto md:mx-0">Work</a>
-                                <a href="#skills" className="hover:text-white/60 transition-colors w-fit mx-auto md:mx-0">About</a>
-                                <a href="#contact" className="hover:text-white/60 transition-colors w-fit mx-auto md:mx-0">Contact</a>
-                            </nav>
+            <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col pt-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-16 items-center mb-16">
+                    
+                    {/* LEFT SIDE: Closing Block */}
+                    <motion.div 
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        className="flex flex-col h-full justify-center"
+                    >
+                        <div className="mb-12">
+                            <span className="text-white/40 text-[11px] font-bold tracking-[0.2em] uppercase mb-4 block">
+                                Open to Opportunities
+                            </span>
+                            <h2 className="text-5xl md:text-7xl font-semibold tracking-tighter text-white mb-8 leading-[1.1]">
+                                Let's build<br />
+                                <span className="text-sky-200/90 italic drop-shadow-[0_0_15px_rgba(186,230,253,0.3)]">something useful.</span>
+                            </h2>
+                            <p className="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-lg">
+                                I'm currently open to frontend, UI-focused, and product engineering opportunities — especially where design quality and execution both matter.
+                            </p>
+                            <p className="text-white/45 text-base font-light leading-relaxed max-w-lg mt-3">
+                                If you're building something thoughtful and need someone who can help shape and ship the interface, I'd be glad to connect.
+                            </p>
                         </div>
-                    </div>
 
-                    <div className="space-y-8 text-center">
-                        <div>
-                            <span className="text-white/30 text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Official Contact</span>
-                            <a href="mailto:sasikumarsingireddy@gmail.com" className="text-xl md:text-2xl lg:text-3xl font-light hover:opacity-70 transition-opacity whitespace-nowrap inline-block">
-                                sasikumarsingireddy@gmail.com
-                            </a>
-                            <div className="mt-6 flex flex-col items-center gap-2 text-white/50 font-light">
-                                <div className="flex items-center gap-2">
-                                    <Phone className="w-4 h-4" />
-                                    <span>+91 9390075359</span>
+                        {/* Action Hierarchy */}
+                        <div className="space-y-6 max-w-sm" style={{ transformStyle: "preserve-3d" }}>
+                            <motion.a 
+                                href="mailto:sasikumarsingireddy@gmail.com" 
+                                whileHover={{ scale: 1.02, rotateX: 5, rotateY: -5 }}
+                                whileTap={{ scale: 0.98 }}
+                                className="group flex items-center justify-between w-full px-6 py-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 relative overflow-hidden"
+                                style={{ transformStyle: "preserve-3d" }}
+                            >
+                                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 left-0 top-0"></div>
+                                <div className="flex items-center gap-4 relative z-10" style={{ transform: "translateZ(10px)" }}>
+                                    <Mail className="w-5 h-5 text-emerald-400 group-hover:text-emerald-300 transition-colors" />
+                                    <span className="text-white font-medium">Email Me</span>
                                 </div>
-                                <div className="flex items-center gap-2">
-                                    <MapPin className="w-4 h-4" />
-                                    <span>Visakhapatnam, AP</span>
-                                </div>
+                                <ArrowUpRight className="w-5 h-5 text-white/30 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all relative z-10" style={{ transform: "translateZ(10px)" }} />
+                            </motion.a>
+
+                            <div className="flex items-center gap-4">
+                                <a 
+                                    href="#" 
+                                    className="group flex-1 flex items-center justify-center gap-2 px-4 py-4 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/5 transition-colors"
+                                >
+                                    <FileText className="w-4 h-4 text-white/30 group-hover:text-white transition-colors" />
+                                    <span className="text-white/50 group-hover:text-white transition-colors text-sm font-medium">Resume</span>
+                                </a>
+                                <a 
+                                    href="https://github.com/sasi-kumar-s" 
+                                    target="_blank" rel="noopener noreferrer" 
+                                    className="group flex items-center justify-center w-[52px] h-[52px] rounded-xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/5 transition-colors shrink-0"
+                                >
+                                    <Github className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
+                                </a>
+                                <a 
+                                    href="https://www.linkedin.com/in/singireddy-sasi-kumar" 
+                                    target="_blank" rel="noopener noreferrer" 
+                                    className="group flex items-center justify-center w-[52px] h-[52px] rounded-xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/5 transition-colors shrink-0"
+                                >
+                                    <Linkedin className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
+                                </a>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
-                    <div className="space-y-8 flex flex-col items-center lg:items-end">
-                        <div className="w-full max-w-[200px] lg:max-w-none">
-                            <span className="text-white/30 text-xs font-bold tracking-[0.2em] uppercase mb-6 block text-center lg:text-right text-nowrap">Follow Me</span>
-                            <div className="flex justify-center lg:justify-end gap-4">
-                                <MagneticLink href="https://github.com/sasi-kumar-s">
-                                    <Github className="w-6 h-6" />
-                                </MagneticLink>
-                                <MagneticLink href="https://www.linkedin.com/in/singireddy-sasi-kumar">
-                                    <Linkedin className="w-6 h-6" />
-                                </MagneticLink>
-                                <MagneticLink href="mailto:sasikumarsingireddy@gmail.com">
-                                    <Mail className="w-6 h-6" />
-                                </MagneticLink>
+                    {/* RIGHT SIDE: Identity Panel */}
+                    <PerspectiveCard
+                        intensity={5}
+                        glareOpacity={0.05}
+                        className="relative w-full aspect-[4/5] md:aspect-[3/4] lg:aspect-[4/5] max-h-[600px] lg:ml-auto group"
+                    >
+                        <motion.div 
+                            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+                            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+                            className="w-full h-full relative"
+                            style={{ transformStyle: "preserve-3d" }}
+                        >
+                            {/* Cinematic Frame Depth */}
+                            <div className="absolute -inset-[1px] bg-gradient-to-b from-white/10 via-white/5 to-transparent rounded-[32px] opacity-70 block" style={{ transform: "translateZ(-1px)" }} />
+                            
+                            <div className="relative w-full h-full rounded-[30px] overflow-hidden bg-[#0A0A0A] border border-white/5 isolation-auto shadow-2xl" style={{ transformStyle: "preserve-3d" }}>
+                                {/* Portrait Image */}
+                                <Image 
+                                    src="/portrait.png"
+                                    alt="Sasi Kumar"
+                                    fill
+                                    className="object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)] mix-blend-luminosity opacity-70 group-hover:opacity-100 group-hover:mix-blend-normal"
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    priority
+                                    style={{ transform: "translateZ(0px)" }}
+                                />
+
+                                {/* Dark Overlays & Gradient Vignette */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-70" />
+                                <div className="absolute inset-0 bg-gradient-to-r from-[#050505]/60 via-transparent to-transparent opacity-80" />
+                                <div className="absolute inset-0 shadow-[inset_0_0_80px_rgba(0,0,0,0.8)] pointer-events-none" />
+
+                                {/* Floating Role Chip / Sub-elements */}
+                                <div className="absolute bottom-8 left-8 right-8 flex flex-col justify-end" style={{ transformStyle: "preserve-3d" }}>
+                                    <div className="space-y-3" style={{ transformStyle: "preserve-3d" }}>
+                                        <div 
+                                            className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-black/60 backdrop-blur-md border border-white/10 w-fit"
+                                            style={{ transform: "translateZ(40px)" }}
+                                        >
+                                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-[pulse_2s_ease-in-out_infinite] shadow-[0_0_10px_rgba(52,211,153,0.5)]" />
+                                            <span className="text-[10px] uppercase tracking-[0.15em] text-white/80 font-bold">Open to Roles</span>
+                                        </div>
+                                        <div className="flex flex-col gap-1.5" style={{ transform: "translateZ(20px)" }}>
+                                            <h3 className="text-3xl font-medium text-white tracking-tight leading-none">
+                                                Sasi Kumar
+                                            </h3>
+                                            <p className="text-sky-200/50 text-base font-light tracking-wide">
+                                                Frontend / UI / Product
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Edge Light Effect */}
+                                <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-sky-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
                             </div>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </PerspectiveCard>
                 </div>
-            </motion.div>
 
-            {/* Bottom Footer */}
-            <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col md:flex-row justify-between items-center py-8 border-t border-white/5 text-white/20 text-xs tracking-widest font-medium uppercase">
-                <div className="mb-4 md:mb-0">
-                    © {new Date().getFullYear()} SASI KUMAR — ALL RIGHTS RESERVED
-                </div>
-                <div className="flex gap-8">
-                    <span>DESIGNED BY ME</span>
-                    <span>DEVELOPED WITH NEXT.JS</span>
+                {/* Footer Bottom Line */}
+                <div className="w-full flex flex-col md:flex-row justify-between items-center py-8 border-t border-white/[0.05] text-white/25 text-[11px] tracking-[0.15em] font-bold uppercase mt-8">
+                    <div className="mb-4 md:mb-0">
+                        © {new Date().getFullYear()} SASI KUMAR — ALL RIGHTS RESERVED
+                    </div>
                 </div>
             </div>
-        </footer>
+        </section>
     );
 };
