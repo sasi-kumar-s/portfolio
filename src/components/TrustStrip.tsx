@@ -19,10 +19,8 @@ export const TrustStrip = () => {
             <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
             <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
             
-            <motion.div 
-                animate={{ x: ["0%", "-33.33%"] }}
-                transition={{ repeat: Infinity, ease: "linear", duration: 25 }}
-                className="flex items-center gap-12 whitespace-nowrap min-w-max"
+            <div 
+                className="flex items-center gap-12 whitespace-nowrap min-w-max animate-marquee"
             >
                 {marqueeItems.map((signal, idx) => (
                     <div 
@@ -34,7 +32,7 @@ export const TrustStrip = () => {
                         <div className="w-1.5 h-1.5 rotate-45 bg-white/10" />
                     </div>
                 ))}
-            </motion.div>
+            </div>
         </section>
     );
 };
