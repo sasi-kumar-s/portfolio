@@ -50,7 +50,9 @@ const tasks = [
         status: "Shipping Refinements", 
         type: "active",
         color: "emerald",
-        icon: <LayerSplitIcon />
+        icon: <LayerSplitIcon />,
+        progress: 75,
+        progressColor: "bg-emerald-400"
     },
     { 
         title: "PixelMind",
@@ -59,7 +61,9 @@ const tasks = [
         status: "Core MVP Build", 
         type: "active",
         color: "sky",
-        icon: <PixelMindIcon />
+        icon: <PixelMindIcon />,
+        progress: 40,
+        progressColor: "bg-sky-400"
     },
     { 
         title: "LLM UI Rendering",
@@ -68,7 +72,9 @@ const tasks = [
         status: "Experimental R&D", 
         type: "exploring",
         color: "teal",
-        icon: <LLMIcon />
+        icon: <LLMIcon />,
+        progress: 20,
+        progressColor: "bg-amber-400"
     },
 ];
 
@@ -97,17 +103,17 @@ export const CurrentlyBuilding = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.8, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
-                            className="group flex flex-col p-8 md:p-10 rounded-[28px] bg-[#0C0C0C] border border-white/[0.04] relative overflow-hidden hover:bg-[#111] transition-colors duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_15px_40px_rgba(0,0,0,0.3)]"
+                            className={`group flex flex-col p-8 md:p-10 rounded-[28px] border relative overflow-hidden transition-colors duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-[0_15px_40px_rgba(0,0,0,0.3)] transform-gpu ${task.title === 'PixelMind' ? 'bg-[#0d1a26] border-[#1a2a3a] hover:bg-[#0f1e2e]' : 'bg-[#0C0C0C] border-white/[0.04] hover:bg-[#111]'}`}
                         >
                             {/* Top Edge Highlight */}
-                            <div className={`absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent ${task.color === 'emerald' ? 'via-emerald-400/40' : task.color === 'sky' ? 'via-sky-400/40' : 'via-teal-400/40'} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+                            <div className={`absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent ${task.color === 'emerald' ? 'via-emerald-400/40' : task.color === 'sky' ? 'via-sky-400/40' : 'via-teal-400/40'} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 will-change-[opacity]`} />
                             
                             {/* Module Header Elements */}
                             <div className="flex items-start justify-between mb-12 relative z-10">
                                 <div className="p-3.5 rounded-[18px] bg-white/[0.02] border border-white/[0.05] group-hover:border-white/10 transition-colors duration-500 shadow-inner">
                                     {task.icon}
                                 </div>
-                                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/[0.02] border border-white/[0.04] text-[10px] uppercase font-bold tracking-[0.15em] ${task.type === 'active' ? 'text-white/80' : 'text-white/45'}`}>
+                                <div className={`flex items-center gap-2 px-3 py-1.5 rounded-md bg-white/[0.02] border border-white/[0.04] text-[12px] uppercase font-bold tracking-[0.15em] ${task.type === 'active' ? 'text-white/80' : 'text-white/45'}`}>
                                     <div className={`w-1.5 h-1.5 rounded-full ${task.color === 'emerald' ? 'bg-emerald-400/90 shadow-[0_0_8px_rgba(52,211,153,0.6)]' : task.color === 'sky' ? 'bg-sky-400/90 shadow-[0_0_8px_rgba(56,189,248,0.6)]' : 'bg-teal-400/90 shadow-[0_0_8px_rgba(45,212,191,0.6)]'} animate-[pulse_2s_ease-in-out_infinite]`} />
                                     {task.status}
                                 </div>
@@ -121,6 +127,18 @@ export const CurrentlyBuilding = () => {
                                 <p className="text-white/45 font-light text-[15px] leading-relaxed max-w-[95%]">
                                     {task.subline}
                                 </p>
+                                {/* Progress Bar */}
+                                <div className="pt-4 mb-3">
+                                    <div className="w-full h-[3px] bg-white/[0.05] rounded-full overflow-hidden transform-gpu">
+                                        <div 
+                                            className={`h-full ${task.progressColor} rounded-full transition-all duration-1000 ease-out`}
+                                            style={{ width: `${task.progress}%` }}
+                                        />
+                                    </div>
+                                    <div className="flex justify-between mt-[6px]">
+                                        <span className="text-[12px] text-white/25 font-mono">{task.progress}%</span>
+                                    </div>
+                                </div>
                                 {/* Current Focus Line */}
                                 <div className="pt-2 border-t border-white/[0.05]">
                                     <p className="text-white/65 text-[12px] font-mono tracking-wide">

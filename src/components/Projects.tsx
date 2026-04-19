@@ -11,14 +11,14 @@ const projects = [
         title: "LayerSplit",
         slug: "layersplit",
         category: "Creative Workflow Tool / AI-Assisted Image Utility",
-        description: "A workflow-first image utility that separates a subject into reusable foreground, background, and mask outputs — built for creators who need more than a simple cutout.",
+        description: "LayerSplit extracts subjects from images and gives you back three separate, ready-to-use outputs — foreground, background, and mask — instead of just a cutout. Built for designers and video editors who need assets they can actually work with, not just a removed background.",
         highlights: [
             "Foreground extraction", 
             "Background recovery", 
             "Editable mask output", 
             "Workflow-first export structure"
         ],
-        insight: "Most background tools stop at extraction. LayerSplit is designed to make those outputs more usable inside actual creative workflows.",
+        insight: "Every other tool stops at extraction. LayerSplit keeps the background recoverable and exports a clean mask — so your assets stay editable at every stage of a creative workflow.",
         status: "Active Refinement",
         tags: ["Export Layers", "Mask Output", "Background Recovery", "Edge Cleanup", "Workflow Export"],
         image: "/projects/layersplit.png",
@@ -32,14 +32,14 @@ const projects = [
         title: "PixelMind",
         slug: "pixelmind",
         category: "AI-Assisted Design-to-Code Platform",
-        description: "A design-to-code MVP exploring how visual UI ideas can be translated into structured, editable frontend output instead of rigid one-shot code generation.",
+        description: "PixelMind takes a UI screenshot or design file and breaks it into structured, editable frontend components — not a wall of generated HTML. The goal is a refinement-friendly output you can actually build on top of.",
         highlights: [
             "Visual UI interpretation", 
             "Design-to-structure workflow", 
             "Editable frontend output", 
             "Component-oriented generation"
         ],
-        insight: "Most design-to-code tools generate rough-looking code. PixelMind explores a more structured, refinement-friendly approach to frontend generation.",
+        insight: "Design-to-code tools usually produce tangled one-shot output. PixelMind treats the generated code as a starting point — structured by component, easy to modify, ready for a real codebase.",
         status: "MVP in Development",
         tags: ["Upload Design", "Detected Components", "Layout Structure", "Editable Blocks", "Output Control"],
         image: "/projects/pixelmind.png",
@@ -82,9 +82,9 @@ export const Projects = () => {
 
 const ProjectShowcase = ({ project, index }: { project: typeof projects[0], index: number }) => {
     return (
-        <div className="relative group">
-            {/* Ambient Background Glow */}
-            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-[500px] bg-gradient-to-br ${project.color} blur-[60px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000`} />
+        <div className="relative group hover:-translate-y-1 transition-transform duration-200 ease-out">
+            {/* Ambient Background Glow (GPU Optimized) */}
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-[500px] bg-gradient-to-br ${project.color} blur-[60px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000 will-change-[opacity] transform-gpu backface-visibility-hidden`} />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center relative z-10">
                 
@@ -142,8 +142,7 @@ const ProjectShowcase = ({ project, index }: { project: typeof projects[0], inde
                         {project.description}
                     </p>
 
-                    <div className="bg-[#0C0C0C] border border-white/[0.05] rounded-2xl p-6 mb-8 relative overflow-hidden group/insight shadow-[inset_0_2px_10px_rgba(255,255,255,0.01)]" style={{ transform: "translateZ(20px)", transformStyle: "preserve-3d" }}>
-                        <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-sky-300/30 to-transparent" style={{ transform: "translateZ(10px)" }} />
+                    <div className="bg-[#0C0C0C] border border-white/[0.05] border-l-[2px] border-l-[#1D9E75] rounded-[0_10px_10px_0] p-6 mb-8 relative overflow-hidden group/insight shadow-[inset_0_2px_10px_rgba(255,255,255,0.01)]" style={{ transform: "translateZ(20px)", transformStyle: "preserve-3d" }}>
                         <span className="text-white/35 text-[10px] font-bold tracking-[0.15em] uppercase mb-2 block">Why it matters</span>
                         <p className="text-white/60 font-light leading-relaxed text-[15px]">
                             {project.insight}
@@ -153,13 +152,23 @@ const ProjectShowcase = ({ project, index }: { project: typeof projects[0], inde
                     <div className="mb-10 space-y-3">
                         {project.highlights.map((highlight, hIdx) => (
                             <div key={hIdx} className="flex items-center gap-3">
-                                <div className="w-1 h-1 rounded-full bg-white/20" />
+                                <div className="w-[4px] h-[4px] rounded-full bg-[#1D9E75]" />
                                 <span className="text-white/60 font-light text-[15px]">{highlight}</span>
                             </div>
                         ))}
                     </div>
 
-                    <div className="flex flex-wrap gap-2 mb-10">
+                    <div className="flex flex-wrap gap-2 mb-2">
+                        {project.slug === 'layersplit' && (
+                            <>
+                                <span className="px-3 py-1.5 rounded-md border border-[#1D9E75]/20 text-[10px] uppercase font-medium tracking-[0.15em] text-[#1D9E75] bg-[#1D9E75]/10 cursor-default">
+                                    Active Refinement
+                                </span>
+                                <span className="px-3 py-1.5 rounded-md border border-white/[0.05] text-[10px] uppercase font-medium tracking-[0.15em] text-white/45 bg-white/[0.01] hover:bg-white/[0.03] hover:text-white/70 hover:border-white/10 transition-colors duration-500 cursor-default">
+                                    Creative Workflow Tool
+                                </span>
+                            </>
+                        )}
                         {project.tags.map((tag, tIdx) => (
                             <span 
                                 key={tIdx} 
@@ -169,13 +178,21 @@ const ProjectShowcase = ({ project, index }: { project: typeof projects[0], inde
                             </span>
                         ))}
                     </div>
+                    {project.slug === 'layersplit' && (
+                        <div className="flex flex-row items-center gap-[6px] mb-10 mt-[8px]">
+                            <span className="text-[12px] text-[#555] font-[400]">Used in active creator workflows</span>
+                            <div className="w-[3px] h-[3px] rounded-full bg-[#333]" />
+                            <span className="text-[12px] text-[#555] font-[400]">Built and maintained solo</span>
+                        </div>
+                    )}
+                    {project.slug !== 'layersplit' && <div className="mb-10" />}
 
                     <div className="flex flex-wrap items-center gap-4">
                         <a href={`/projects/${project.slug}`} className="flex items-center justify-center gap-2 bg-white text-black px-6 py-3.5 rounded-full text-sm font-semibold tracking-wide hover:bg-neutral-200 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group/btn">
                             Explore Project <ArrowUpRight className="w-4 h-4 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform" />
                         </a>
                         <a href={project.demo} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/10 text-white/70 text-sm font-medium hover:bg-white/5 hover:text-white hover:border-white/20 transition-all duration-500 group/demo relative">
-                            <span className="relative z-10">Live Demo</span>
+                            <span className="relative z-10">{project.slug === 'layersplit' ? 'Live Demo' : 'View Screenshots →'}</span>
                             {/* Accent Glow */}
                             <div className="absolute inset-0 bg-gradient-to-r from-sky-500/0 via-sky-500/5 to-transparent opacity-0 group-hover/demo:opacity-100 transition-opacity duration-500 rounded-full" />
                         </a>

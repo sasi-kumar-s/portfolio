@@ -29,8 +29,12 @@ export const Hero = () => {
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                             >
+                                <div className="flex items-center gap-[6px] mb-4">
+                                    <div className="w-[6px] h-[6px] rounded-full bg-[#1D9E75]" />
+                                    <span className="text-[12px] uppercase tracking-[0.12em] text-[#1D9E75] font-medium">Available for frontend roles</span>
+                                </div>
                                 <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 leading-[1.1] bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400">
-                                    Sasi Kumar.
+                                    Sasi Kumar<span className="text-[#222]">.</span>
                                 </h1>
                                 <h2 className="text-xl md:text-2xl font-light text-neutral-300 tracking-tight">
                                     Frontend Developer / Product Builder
@@ -44,20 +48,36 @@ export const Hero = () => {
                                 className="space-y-5 max-w-xl mt-8"
                             >
                                 <p className="text-neutral-400 text-base md:text-lg font-light leading-relaxed">
-                                    Designing and building polished interfaces, structured MVPs, and workflow-driven products that prioritize <span className="text-sky-200/90 font-medium tracking-wide">clarity, usability, and execution</span>.
+                                    I ship interfaces that work — not just look good. Currently building <span className="text-sky-200/90 font-medium tracking-wide">LayerSplit</span> (AI image utility) and <span className="text-sky-200/90 font-medium tracking-wide">PixelMind</span> (design-to-code tool) from scratch, handling everything from UI architecture to product decisions.
                                 </p>
-                                <div className="pl-5 border-l-2 border-sky-300/20 py-1">
-                                    <p className="text-neutral-500 text-sm font-medium tracking-wide leading-relaxed">
-                                        Currently building LayerSplit & PixelMind — exploring product workflows, interface systems, and real-world frontend execution.
-                                    </p>
-                                </div>
+                            </motion.div>
+
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+                                className="flex items-center gap-6 pt-6"
+                            >
+                                {[
+                                    { num: "2", label: "Products live" },
+                                    { num: "3+", label: "Years React" },
+                                    { num: "100%", label: "Self-directed" }
+                                ].map((stat, i) => (
+                                    <React.Fragment key={i}>
+                                        {i > 0 && <div className="w-[1px] h-[28px] bg-white/10" />}
+                                        <div className="flex flex-col">
+                                            <span className="text-[24px] font-[800] text-white leading-tight">{stat.num}</span>
+                                            <span className="text-[13px] text-[#666]">{stat.label}</span>
+                                        </div>
+                                    </React.Fragment>
+                                ))}
                             </motion.div>
 
                             <motion.div
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                                className="flex flex-wrap items-center gap-4 pt-8 text-sm"
+                                className="flex flex-wrap items-center gap-4 pt-6 text-sm"
                             >
                                 <a
                                     href="#projects"
@@ -65,6 +85,12 @@ export const Hero = () => {
                                 >
                                     <span>Explore Work</span>
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                                </a>
+                                <a
+                                    href="#"
+                                    className="flex items-center justify-center px-8 py-3.5 rounded-full border border-[#222] text-[#888] text-sm font-medium hover:border-[#333] hover:text-[#ccc] transition-all duration-300"
+                                >
+                                    View Resume
                                 </a>
                             </motion.div>
                         </div>

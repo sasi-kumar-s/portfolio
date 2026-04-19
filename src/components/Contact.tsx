@@ -35,10 +35,7 @@ export const Contact = () => {
                                 <span className="text-sky-200/90 italic drop-shadow-[0_0_15px_rgba(186,230,253,0.3)]">something useful.</span>
                             </h2>
                             <p className="text-white/60 text-lg md:text-xl font-light leading-relaxed max-w-lg">
-                                I'm currently open to frontend, UI-focused, and product engineering opportunities — especially where design quality and execution both matter.
-                            </p>
-                            <p className="text-white/45 text-base font-light leading-relaxed max-w-lg mt-3">
-                                If you're building something thoughtful and need someone who can help shape and ship the interface, I'd be glad to connect.
+                                I’m actively looking for frontend and product-focused roles — especially teams that care about interface quality and ship real things. If that sounds like your team, let’s talk.
                             </p>
                         </div>
 
@@ -54,32 +51,37 @@ export const Contact = () => {
                                 <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 left-0 top-0"></div>
                                 <div className="flex items-center gap-4 relative z-10" style={{ transform: "translateZ(10px)" }}>
                                     <Mail className="w-5 h-5 text-emerald-400 group-hover:text-emerald-300 transition-colors" />
-                                    <span className="text-white font-medium">Email Me</span>
+                                    <div className="flex flex-col text-left">
+                                        <span className="text-white font-medium">Send me an email</span>
+                                        <span className="text-[11px] text-[#444] mt-[2px]">sasikumarsingireddy@gmail.com</span>
+                                    </div>
                                 </div>
                                 <ArrowUpRight className="w-5 h-5 text-white/30 group-hover:text-white group-hover:translate-x-1 group-hover:-translate-y-1 transition-all relative z-10" style={{ transform: "translateZ(10px)" }} />
                             </motion.a>
 
-                            <div className="flex items-center gap-4">
-                                <a 
-                                    href="#" 
-                                    className="group flex-1 flex items-center justify-center gap-2 px-4 py-4 rounded-xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/5 transition-colors"
-                                >
-                                    <FileText className="w-4 h-4 text-white/30 group-hover:text-white transition-colors" />
-                                    <span className="text-white/50 group-hover:text-white transition-colors text-sm font-medium">Resume</span>
-                                </a>
+                            <div className="grid grid-cols-3 gap-[8px] w-full">
                                 <a 
                                     href="https://github.com/sasi-kumar-s" 
                                     target="_blank" rel="noopener noreferrer" 
-                                    className="group flex items-center justify-center w-[52px] h-[52px] rounded-xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/5 transition-colors shrink-0"
+                                    className="group flex flex-row items-center justify-center gap-2 px-2 py-4 rounded-xl bg-transparent border border-[#222] hover:bg-[#111] hover:border-[#333] transition-colors"
                                 >
-                                    <Github className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
+                                    <Github className="w-4 h-4 text-[#888] group-hover:text-[#ccc] transition-colors shrink-0" />
+                                    <span className="text-[#888] group-hover:text-[#ccc] transition-colors text-[13px] font-medium">GitHub</span>
                                 </a>
                                 <a 
                                     href="https://www.linkedin.com/in/singireddy-sasi-kumar" 
                                     target="_blank" rel="noopener noreferrer" 
-                                    className="group flex items-center justify-center w-[52px] h-[52px] rounded-xl bg-white/[0.02] border border-white/[0.05] hover:bg-white/5 transition-colors shrink-0"
+                                    className="group flex flex-row items-center justify-center gap-2 px-2 py-4 rounded-xl bg-transparent border border-[#222] hover:bg-[#111] hover:border-[#333] transition-colors"
                                 >
-                                    <Linkedin className="w-5 h-5 text-white/40 group-hover:text-white transition-colors" />
+                                    <Linkedin className="w-4 h-4 text-[#888] group-hover:text-[#ccc] transition-colors shrink-0" />
+                                    <span className="text-[#888] group-hover:text-[#ccc] transition-colors text-[13px] font-medium">LinkedIn</span>
+                                </a>
+                                <a 
+                                    href="#" 
+                                    className="group flex flex-row items-center justify-center gap-2 px-2 py-4 rounded-xl bg-transparent border border-[#222] hover:bg-[#111] hover:border-[#333] transition-colors"
+                                >
+                                    <FileText className="w-4 h-4 text-[#888] group-hover:text-[#ccc] transition-colors shrink-0" />
+                                    <span className="text-[#888] group-hover:text-[#ccc] transition-colors text-[13px] font-medium">Resume</span>
                                 </a>
                             </div>
                         </div>
@@ -151,6 +153,14 @@ export const Contact = () => {
                 <div className="w-full flex flex-col md:flex-row justify-between items-center py-8 border-t border-white/[0.05] text-white/25 text-[11px] tracking-[0.15em] font-bold uppercase mt-8">
                     <div className="mb-4 md:mb-0">
                         © {new Date().getFullYear()} SASI KUMAR — ALL RIGHTS RESERVED
+                    </div>
+                    <div className="flex items-center gap-4">
+                        <a href="https://github.com/sasi-kumar-s" target="_blank" rel="noopener noreferrer" className="text-white/25 hover:text-white/60 transition-colors duration-300">
+                            <Github className="w-4 h-4" />
+                        </a>
+                        <a href="https://www.linkedin.com/in/singireddy-sasi-kumar" target="_blank" rel="noopener noreferrer" className="text-white/25 hover:text-white/60 transition-colors duration-300">
+                            <Linkedin className="w-4 h-4" />
+                        </a>
                     </div>
                 </div>
             </div>

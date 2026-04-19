@@ -2,10 +2,12 @@
 import React from "react";
 
 const signals = [
-    "Building real products",
-    "Focused on UI + product workflows",
-    "Developing LayerSplit & PixelMind",
-    "Open to frontend roles & UI collaborations"
+    "Shipping LayerSplit & PixelMind",
+    "React / Next.js / Tailwind",
+    "Open to Frontend Roles",
+    "UI-first product thinking",
+    "Based in Andhra Pradesh, India",
+    "Available for remote work"
 ];
 
 // Duplicate for seamless infinite marquee loop

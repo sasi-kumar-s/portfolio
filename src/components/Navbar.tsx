@@ -17,11 +17,18 @@ export const Navbar = () => {
     const [activeSection, setActiveSection] = useState("");
 
     useEffect(() => {
+        let rafId = 0;
         const handleScroll = () => {
-            setScrolled(window.scrollY > 50);
+            cancelAnimationFrame(rafId);
+            rafId = requestAnimationFrame(() => {
+                setScrolled(window.scrollY > 50);
+            });
         };
         window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            cancelAnimationFrame(rafId);
+        };
     }, []);
 
     useEffect(() => {

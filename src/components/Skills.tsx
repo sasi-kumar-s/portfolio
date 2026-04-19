@@ -6,22 +6,34 @@ const skillCategories = [
     {
         title: "Core Frontend",
         label: "Execution Layer",
-        skills: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS"]
+        skills: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Tailwind CSS"],
+        pillText: "text-[#378ADD]",
+        pillBorder: "border-[#378ADD]/25",
+        pillBg: "bg-[#378ADD]/5"
     },
     {
         title: "Design & UX",
         label: "Interface Thinking",
-        skills: ["Figma", "UI Design", "Wireframing", "Prototyping", "Design Systems", "Responsive Design"]
+        skills: ["Figma", "UI Design", "Wireframing", "Prototyping", "Design Systems", "Responsive Design"],
+        pillText: "text-[#1D9E75]",
+        pillBorder: "border-[#1D9E75]/25",
+        pillBg: "bg-[#1D9E75]/5"
     },
     {
         title: "Product & Workflow",
         label: "Product Thinking",
-        skills: ["Product Thinking", "User Flows", "Interface Structuring", "Rapid Prototyping"]
+        skills: ["Product Thinking", "User Flows", "Interface Structuring", "Rapid Prototyping"],
+        pillText: "text-[#EF9F27]",
+        pillBorder: "border-[#EF9F27]/25",
+        pillBg: "bg-[#EF9F27]/5"
     },
     {
         title: "Technical Exploration",
         label: "Exploration Layer",
-        skills: ["Python", "AI Tool Workflows", "Prompt Engineering", "Image Processing"]
+        skills: ["Python", "AI Tool Workflows", "Prompt Engineering", "Image Processing"],
+        pillText: "text-[#7F77DD]",
+        pillBorder: "border-[#7F77DD]/25",
+        pillBg: "bg-[#7F77DD]/5"
     }
 ];
 
@@ -50,19 +62,19 @@ export const Skills = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            className="group relative flex flex-col md:flex-row md:items-start border-t border-white/[0.03] first:border-t-0 py-8 hover:translate-x-2 transition-transform duration-300"
+                            className="group relative flex flex-col md:flex-row md:items-start border-t border-white/[0.03] first:border-t-0 py-8 hover:translate-x-2 transition-transform duration-300 transform-gpu will-change-transform"
                         >
                             {/* Structural Node Marker */}
                             <div 
-                                className="hidden md:block absolute left-[-32px] top-12 w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-sky-400 group-hover:shadow-[0_0_10px_rgba(56,189,248,0.5)] transition-all duration-500" 
+                                className="hidden md:block absolute left-[-32px] top-12 w-1.5 h-1.5 rounded-full bg-white/20 group-hover:bg-sky-400 group-hover:shadow-[0_0_10px_rgba(56,189,248,0.5)] transition-all duration-500 will-change-[background-color]" 
                                 style={{ transform: "translateZ(20px)" }} 
                             />
                             
                             {/* Hover Accent Glow */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-sky-400/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-r-2xl" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-sky-400/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none rounded-r-2xl will-change-[opacity]" />
                             
                             <div className="md:w-1/3 mb-6 md:mb-0 shrink-0 pr-4">
-                                <span className="text-white/35 text-[10px] uppercase tracking-[0.15em] font-bold mb-2 block font-mono">
+                                <span className="text-white/35 text-[12px] uppercase tracking-[0.15em] font-bold mb-2 block font-mono">
                                     // {category.label}
                                 </span>
                                 <h3 className="text-white text-xl font-medium tracking-wide">
@@ -72,12 +84,16 @@ export const Skills = () => {
                             
                             <div className="md:w-2/3 flex flex-wrap gap-2.5 relative z-10" style={{ transformStyle: "preserve-3d" }}>
                                 {category.skills.map((skill, sIdx) => (
-                                    <span 
-                                        key={sIdx} 
-                                        className="text-white/50 text-[13px] font-light px-3 py-1.5 rounded-[6px] border border-white/[0.05] bg-[#0C0C0C] group-hover:bg-[#111] group-hover:text-white/80 group-hover:border-white/10 transition-all duration-300 cursor-default hover:scale-105 hover:border-white/20"
+                                    <motion.span 
+                                        key={sIdx}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.4, delay: sIdx * 0.03, ease: [0.16, 1, 0.3, 1] }}
+                                        className={`${category.pillText} text-[13px] font-light px-3 py-1.5 rounded-[6px] ${category.pillBorder} ${category.pillBg} transition-transform duration-300 transform-gpu cursor-default hover:scale-105 will-change-transform`}
                                     >
                                         {skill}
-                                    </span>
+                                    </motion.span>
                                 ))}
                             </div>
                         </motion.div>

@@ -56,14 +56,18 @@ nextjs-portal {
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAMAAAAp4XiDAAAAUVBMVEWFhYWDg4N3d3dtbW17e3t1dXWBgYGHh4d5eXlzc3Oeli4teleVlZWLi4ueli4teleScnJyenp6NjsF+fn6Ghoampqeli4teleWeli4telpKSkoKCgqeli4telpKSeoKCgmpqaueli4teleWeli4teleUVFREAAAAGnRSTlMAAQIDBgkOERQXGh0gICMmKSwtMDM2OT0/QUSmaxcAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAAadEVYdFNvZnR3YXJlAFBhaW50Lk5FVCB2Mi4xLjFl99kNAAAApklEQVRIS+3RRw7DMAAF0U/JFDt9Yu78D5oFvDAGA17gnwCY+RZCmP+CkLkFIS45Rc3sCFKGkjNE7W4LSM7kAUt+5ABBuIMgiB0EQewgCAJ3BEEcIAjiAEEQBwiC2EEQxA6CIHYQBHGAIIgDBEHsIAhiB0EQOwgC30EQ+A6CwHcQBL6DIPAdBIHvIAh8B0HgOwiCOEAQxIH/LyrPLCqqz0RK6Xs9AT5fE0GlXmiRAAAAAElFTkSuQmCC");
   background-repeat: repeat;
   transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-33.333333%); }
+  0% { transform: translateX(0%) translateZ(0); }
+  100% { transform: translateX(-33.333333%) translateZ(0); }
 }
 
 .animate-marquee {
   animation: marquee 25s linear infinite;
   will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
+
