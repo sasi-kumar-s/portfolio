@@ -76,7 +76,7 @@ export const CurrentlyBuilding = () => {
     return (
         <section id="execution" className="py-14 md:py-18 px-6 md:px-12 lg:px-24 bg-[#0a0a0a] border-y border-white/[0.02] relative overflow-hidden">
             {/* Background Atmosphere */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-white/[0.01] rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-white/[0.01] rounded-full blur-[40px] pointer-events-none" />
 
             <div className="max-w-7xl mx-auto relative z-10">
                 <div className="flex flex-col md:items-center justify-center mb-10 md:mb-12">
@@ -130,7 +130,7 @@ export const CurrentlyBuilding = () => {
                             </div>
 
                             {/* Background Overlay Glows on Hover */}
-                            <div className={`absolute -bottom-24 -right-24 w-64 h-64 rounded-full blur-[100px] opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none ${task.color === 'emerald' ? 'bg-emerald-500' : task.color === 'sky' ? 'bg-sky-500' : 'bg-teal-500'}`} />
+                            <div className={`absolute -bottom-24 -right-24 w-64 h-64 rounded-full blur-[40px] opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none ${task.color === 'emerald' ? 'bg-emerald-500' : task.color === 'sky' ? 'bg-sky-500' : 'bg-teal-500'}`} />
                         </motion.div>
                     ))}
                 </div>

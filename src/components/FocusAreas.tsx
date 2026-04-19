@@ -67,7 +67,7 @@ export const FocusAreas = () => {
                             >
                                 {/* Inner Hover Glow Lighting */}
                                 <div className="absolute inset-0 bg-gradient-to-br from-white/[0.04] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-                                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-500/[0.02] opacity-0 group-hover:opacity-100 blur-[80px] transition-opacity duration-700 rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none" />
+                                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sky-500/[0.02] opacity-0 group-hover:opacity-100 blur-[40px] transition-opacity duration-700 rounded-full translate-x-1/3 -translate-y-1/3 pointer-events-none" />
                                 
                                 <div className="flex flex-col h-full relative z-10" style={{ transformStyle: "preserve-3d" }}>
                                     <div className="flex justify-between items-start mb-10" style={{ transformStyle: "preserve-3d" }}>

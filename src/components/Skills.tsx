@@ -48,14 +48,9 @@ export const Skills = () => {
                             key={idx}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            whileHover={{ 
-                                x: 10,
-                                transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] }
-                            }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            className="group relative flex flex-col md:flex-row md:items-start border-t border-white/[0.03] first:border-t-0 py-8"
-                            style={{ transformStyle: "preserve-3d" }}
+                            className="group relative flex flex-col md:flex-row md:items-start border-t border-white/[0.03] first:border-t-0 py-8 hover:translate-x-2 transition-transform duration-300"
                         >
                             {/* Structural Node Marker */}
                             <div 
@@ -77,19 +72,12 @@ export const Skills = () => {
                             
                             <div className="md:w-2/3 flex flex-wrap gap-2.5 relative z-10" style={{ transformStyle: "preserve-3d" }}>
                                 {category.skills.map((skill, sIdx) => (
-                                    <motion.span 
+                                    <span 
                                         key={sIdx} 
-                                        whileHover={{ 
-                                            scale: 1.1, 
-                                            translateZ: 15,
-                                            boxShadow: "0 10px 20px rgba(0,0,0,0.4)",
-                                            borderColor: "rgba(255,255,255,0.2)"
-                                        }}
-                                        className="text-white/50 text-[13px] font-light px-3 py-1.5 rounded-[6px] border border-white/[0.05] bg-[#0C0C0C] group-hover:bg-[#111] group-hover:text-white/80 group-hover:border-white/10 transition-all duration-500 cursor-default"
-                                        style={{ transformStyle: "preserve-3d" }}
+                                        className="text-white/50 text-[13px] font-light px-3 py-1.5 rounded-[6px] border border-white/[0.05] bg-[#0C0C0C] group-hover:bg-[#111] group-hover:text-white/80 group-hover:border-white/10 transition-all duration-300 cursor-default hover:scale-105 hover:border-white/20"
                                     >
-                                        <span style={{ transform: "translateZ(5px)" }}>{skill}</span>
-                                    </motion.span>
+                                        {skill}
+                                    </span>
                                 ))}
                             </div>
                         </motion.div>

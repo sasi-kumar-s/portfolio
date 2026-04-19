@@ -12,8 +12,8 @@ export const Contact = () => {
             {/* Cinematic Global Atmosphere */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             
-            <div className="absolute bottom-[-10%] right-[-5%] w-[800px] h-[600px] bg-sky-500/[0.02] rounded-full blur-[150px] pointer-events-none mix-blend-screen" />
-            <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-emerald-500/[0.02] rounded-full blur-[150px] pointer-events-none mix-blend-screen" />
+            <div className="absolute bottom-[-10%] right-[-5%] w-[800px] h-[600px] bg-sky-500/[0.02] rounded-full blur-[80px] pointer-events-none" />
+            <div className="absolute bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-emerald-500/[0.02] rounded-full blur-[80px] pointer-events-none" />
 
             <div className="relative z-10 w-full max-w-7xl mx-auto flex flex-col pt-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-16 items-center mb-16">
@@ -123,7 +123,7 @@ export const Contact = () => {
                                 <div className="absolute bottom-8 left-8 right-8 flex flex-col justify-end" style={{ transformStyle: "preserve-3d" }}>
                                     <div className="space-y-3" style={{ transformStyle: "preserve-3d" }}>
                                         <div 
-                                            className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-black/60 backdrop-blur-md border border-white/10 w-fit"
+                                            className="flex items-center gap-2.5 px-3 py-1.5 rounded-lg bg-black/80 border border-white/10 w-fit"
                                             style={{ transform: "translateZ(40px)" }}
                                         >
                                             <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-[pulse_2s_ease-in-out_infinite] shadow-[0_0_10px_rgba(52,211,153,0.5)]" />

@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowUpRight, Github } from "lucide-react";
 import { PerspectiveCard } from "./PerspectiveCard";
@@ -81,18 +81,10 @@ export const Projects = () => {
 };
 
 const ProjectShowcase = ({ project, index }: { project: typeof projects[0], index: number }) => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-        target: containerRef,
-        offset: ["start end", "end start"]
-    });
-
-    const yMove = useTransform(scrollYProgress, [0, 1], [-50, 50]);
-
     return (
-        <div ref={containerRef} className="relative group">
+        <div className="relative group">
             {/* Ambient Background Glow */}
-            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-[500px] bg-gradient-to-br ${project.color} blur-[120px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000`} />
+            <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-[500px] bg-gradient-to-br ${project.color} blur-[60px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-1000`} />
 
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-12 items-center relative z-10">
                 
@@ -108,9 +100,8 @@ const ProjectShowcase = ({ project, index }: { project: typeof projects[0], inde
                         viewport={{ once: true, margin: "-100px" }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                         className="w-full h-full relative"
-                        style={{ transformStyle: "preserve-3d" }}
                     >
-                        <motion.div style={{ y: yMove, transform: "translateZ(0px)" }} className="absolute inset-0 w-full h-full transform-gpu scale-[1.05] group-hover:scale-100 transition-transform duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]">
+                        <div className="absolute inset-0 w-full h-full transform-gpu">
                             <Image
                                 src={project.image}
                                 alt={project.title}
@@ -118,7 +109,7 @@ const ProjectShowcase = ({ project, index }: { project: typeof projects[0], inde
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 70vw, 50vw"
                                 className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700"
                             />
-                        </motion.div>
+                        </div>
                         
                         {/* Inner Shadow / Vignette for integration */}
                         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a]/90 via-[#0a0a0a]/20 to-transparent opacity-80" />

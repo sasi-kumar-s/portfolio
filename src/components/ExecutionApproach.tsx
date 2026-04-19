@@ -25,46 +25,40 @@ export const ExecutionApproach = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-start p-8 md:p-12 bg-[#0C0C0C]/50 border border-white/[0.03] rounded-[32px] backdrop-blur-sm"
-                        style={{ transformStyle: "preserve-3d" }}
+                        className="flex flex-col lg:flex-row gap-10 lg:gap-20 items-start p-8 md:p-12 bg-[#0C0C0C] border border-white/[0.03] rounded-[32px]"
                     >
                         {/* Left: heading */}
-                        <div className="lg:w-1/3 shrink-0" style={{ transformStyle: "preserve-3d" }}>
+                        <div className="lg:w-1/3 shrink-0">
                             <span 
                                 className="text-white/40 text-[11px] font-bold tracking-[0.2em] uppercase mb-3 block"
-                                style={{ transform: "translateZ(10px)" }}
                             >
                                 What I Actually Do
                             </span>
                             <h2 
                                 className="text-3xl md:text-4xl font-semibold tracking-tighter text-white leading-[1.15]"
-                                style={{ transform: "translateZ(30px)" }}
                             >
                                 What I Actually Do.
                             </h2>
                             <p 
                                 className="text-white/40 text-[15px] font-light leading-relaxed mt-4 max-w-sm"
-                                style={{ transform: "translateZ(20px)" }}
                             >
                                 I work across frontend execution, product thinking, and interface design — turning rough ideas into usable digital products.
                             </p>
                         </div>
 
                         {/* Right: capability list */}
-                        <div className="lg:w-2/3" style={{ transformStyle: "preserve-3d" }}>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4" style={{ transformStyle: "preserve-3d" }}>
+                        <div className="lg:w-2/3">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4">
                                 {capabilities.map((cap, idx) => (
-                                    <motion.div
+                                    <div
                                         key={idx}
-                                        whileHover={{ x: 5, translateZ: 10 }}
-                                        className="flex items-start gap-3 group"
-                                        style={{ transformStyle: "preserve-3d" }}
+                                        className="flex items-start gap-3 group px-4 py-3 rounded-xl border border-white/[0.05] bg-[#0C0C0C] hover:bg-[#111] hover:border-white/20 transition-all duration-100 hover:scale-[1.02] cursor-default shadow-sm hover:shadow-md"
                                     >
-                                        <div className="mt-2 w-1.5 h-1.5 rounded-full bg-white/15 group-hover:bg-sky-400/60 transition-colors duration-500 shrink-0" />
-                                        <span className="text-white/55 text-[15px] font-light leading-relaxed group-hover:text-white/80 transition-colors duration-500">
+                                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-white/15 group-hover:bg-sky-400/80 transition-colors duration-100 shrink-0 shadow-[0_0_0_rgba(56,189,248,0)] group-hover:shadow-[0_0_8px_rgba(56,189,248,0.6)]" />
+                                        <span className="text-white/50 text-[14px] font-light leading-relaxed group-hover:text-white/90 transition-colors duration-100">
                                             {cap}
                                         </span>
-                                    </motion.div>
+                                    </div>
                                 ))}
                             </div>
                         </div>

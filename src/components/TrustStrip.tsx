@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
 
 const signals = [
     "Building real products",
@@ -19,9 +18,7 @@ export const TrustStrip = () => {
             <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
             <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
             
-            <div 
-                className="flex items-center gap-12 whitespace-nowrap min-w-max animate-marquee"
-            >
+            <div className="flex items-center gap-12 whitespace-nowrap min-w-max animate-marquee">
                 {marqueeItems.map((signal, idx) => (
                     <div 
                         key={idx}

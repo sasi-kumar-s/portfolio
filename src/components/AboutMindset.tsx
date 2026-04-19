@@ -6,7 +6,7 @@ export const AboutMindset = () => {
     return (
         <section className="py-12 md:py-16 px-6 md:px-12 lg:px-24 bg-[#0a0a0a] relative overflow-hidden">
             {/* Ambient Background Hint */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-white/[0.01] blur-[100px] rounded-full pointer-events-none" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-white/[0.01] blur-[40px] rounded-full pointer-events-none" />
 
             <div className="max-w-4xl mx-auto flex flex-col items-center text-center relative z-10">
                 <motion.div
